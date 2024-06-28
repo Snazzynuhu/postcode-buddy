@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REST TEST</title>
+    <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
+    <script src="postcodesFunc.js" defer></script>
 </head>
 <body>
     <h1>Postcode List</h1>
+    <!-- START -->
+
+    <ul id="postcode-list"></ul>
+    <form id="distance-form">
+        <label for="postcode1">Select Postcode 1:</label>
+        <select id="postcode1"></select>
+        <label for="postcode2">Select Postcode 2:</label>
+        <select id="postcode2"></select>
+        <button type="submit">Calculate Distance</button>
+    </form>
+    <p id="distance-result"></p>
+
+    <!-- STOP -->
     <ul id="postcodeList"></ul>
 
     <div id="loginSection">

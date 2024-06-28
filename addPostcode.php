@@ -53,4 +53,12 @@ if ($count > 0) {
 $stmt = $conn->prepare("INSERT INTO tbl_postcodes (postcode) VALUES (?)");
 $stmt->bind_param("s", $postcode);
 
-if ($stmt->execute())
+if ($stmt->execute()) {
+    echo json_encode(['success' => true, 'message' => 'Postcode added successfully!']);
+} else {
+    echo json_encode(['success' => false, 'message' => 'Failed to add postcode.']);
+}
+
+$stmt->close();
+$conn->close();
+?>

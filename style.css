@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #007BFF;
+}
+
+ul#postcode-list {
+    list-style: none;
+    padding: 2em 3em;
+    margin: 20px 0;
+    width: 350px;
+    max-height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    column-count: 2;
+    column-gap: 20px;
+    overflow-y: auto; /
+}
+
+li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    break-inside: avoid;
+}
+
+
+form {
+    margin-top: 20px;
+}
+
+form label {
+    margin-right: 10px;
+}
+
+form select {
+    margin-right: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#distance-result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.postCodeItem:hover{
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+
+form#distance-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+form#distance-form label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+form#distance-form select {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form#distance-form button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form#distance-form button:hover {
+    background-color: #0056b3;
+}
+
+p#distance-result {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007BFF;
+}
+
+#postcode-info {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#postcode-info p {
+    margin: 10px 0;
+}
+
+strong {
+    color: #333;
+}
