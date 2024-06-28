@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginSection = document.getElementById('loginSection');
     const postcodeSection = document.getElementById('postcodeSection');
 
+    let isLoggedIn = false;
+
     // Function to fetch postcode data
     async function fetchAllPostCodes() {
         try {
@@ -44,8 +46,11 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteButton.textContent = 'Delete';
             deleteButton.onclick = () => deletePostcode(item.postcodeID, item.postcode);
 
-            listItem.appendChild(editButton);
-            listItem.appendChild(deleteButton);
+            if(isLoggedIn) {
+                listItem.appendChild(editButton);
+                listItem.appendChild(deleteButton);
+            }
+
             postcodeList.appendChild(listItem);
         });
     }
@@ -103,6 +108,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 loginMessageDiv.textContent = 'Login successful!';
                 loginSection.style.display = 'none';
                 postcodeSection.style.display = 'block';
+                isLoggedIn = true;
+                fetchAllPostCodes();
             } else {
                 loginMessageDiv.textContent = `Error: ${result.message}`;
             }
