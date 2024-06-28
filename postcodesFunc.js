@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const postcodesToLookup = [
           "SW1A1AA",
           "EC1A1BB",
-          "W1A1HQ",
           "AB101XG",
           "AB106RN",
           "AB107JB",
