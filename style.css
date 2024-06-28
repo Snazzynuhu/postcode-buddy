@@ -11,6 +11,8 @@ body {
     min-height: 100vh;
 }
 
+
+
 h1 {
     color: #007BFF;
 }
@@ -133,4 +135,85 @@ p#distance-result {
 
 strong {
     color: #333;
+}
+
+/* START */
+
+.postcode-list {
+    list-style: none;
+    padding: 0;
+}
+
+.postcode-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.postcode-list li:last-child {
+    border-bottom: none;
+}
+
+.postcode-list li .buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.postcode-list li .buttons button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.editBtn{
+    background-color: #07b12c;
+}
+.deleteBtn{
+    background-color: #c40404;
+}
+
+.postcode-list li .buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Form styles */
+.form-section {
+    margin-top: 20px;
+}
+
+.form-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-section input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-section button:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    margin-top: 10px;
+    color: red;
 }

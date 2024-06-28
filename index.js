@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const fetchUrl = "https://2315110.linux.studentwebserver.co.uk/getPostcodes.php";
     const addUrl = "https://2315110.linux.studentwebserver.co.uk/addPostcode.php";
     const loginUrl = "https://2315110.linux.studentwebserver.co.uk/login.php";
+    const editUrl = "https://2315110.linux.studentwebserver.co.uk/editPostcode.php";
+    const deleteUrl = "https://2315110.linux.studentwebserver.co.uk/deletePostcode.php";
     const postcodeForm = document.getElementById('postcodeForm');
     const loginForm = document.getElementById('loginForm');
     const messageDiv = document.getElementById('message');
@@ -31,6 +33,19 @@ document.addEventListener("DOMContentLoaded", function() {
         data.forEach(item => {
             const listItem = document.createElement('li');
             listItem.textContent = `Postcode: ${item.postcode}, Postcode ID: ${item.postcodeID}`;
+
+            const editButton = document.createElement('button');
+            editButton.classList.add('editBtn');
+            editButton.textContent = 'Edit';
+            editButton.onclick = () => editPostcode(item.postcodeID, item.postcode);
+
+            const deleteButton = document.createElement('button');
+            deleteButton.classList.add('deleteBtn');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = () => deletePostcode(item.postcodeID, item.postcode);
+
+            listItem.appendChild(editButton);
+            listItem.appendChild(deleteButton);
             postcodeList.appendChild(listItem);
         });
     }
@@ -58,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (result.success) {
                 messageDiv.textContent = 'Postcode added successfully!';
-                fetchAllPostCodes(); // Refresh the list
+                fetchAllPostCodes(); 
             } else {
                 messageDiv.textContent = `Error: ${result.message}`;
             }
@@ -96,6 +111,64 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
+     // Function to edit a postcode
+     async function editPostcode(postcodeID, oldPostcode) {
+        const newPostcode = prompt("Enter the new postcode:", oldPostcode);
+
+        if (!newPostcode || !isValidPostcode(newPostcode)) {
+            alert("Invalid postcode format.");
+            return;
+        }
+
+        try {
+            const response = await fetch(editUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ postcodeID, newPostcode })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert('Postcode edited successfully!');
+                fetchAllPostCodes(); 
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            alert('An error occurred while editing the postcode.');
+        }
+    }
+
+    // Function to delete a postcode
+    async function deletePostcode(postcodeID, postcode) {
+        if (!confirm(`Are you sure you want to delete this postcode (${postcode})?`)) {
+            return;
+        }
+
+        try {
+            const response = await fetch(deleteUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ postcodeID })
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert('Postcode deleted successfully!');
+                fetchAllPostCodes(); 
+            } else {
+                alert(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            alert('An error occurred while deleting the postcode.');
+        }
+    }
 
     // Basic postcode validation (example pattern, adjust as needed)
     function isValidPostcode(postcode) {

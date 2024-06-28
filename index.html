@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>REST TEST</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
     <script src="postcodesFunc.js" defer></script>
-</head>
-<body>
-    <h1>Postcode List</h1>
-    <!-- START -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Postcode List</h1>
+      <!-- START -->
 
-    <ul id="postcode-list"></ul>
-    <form id="distance-form">
+      <ul id="postcode-list"></ul>
+      <form id="distance-form">
         <label for="postcode1">Select Postcode 1:</label>
         <select id="postcode1"></select>
         <label for="postcode2">Select Postcode 2:</label>
         <select id="postcode2"></select>
         <button type="submit">Calculate Distance</button>
-    </form>
-    <p id="distance-result"></p>
+      </form>
+      <p id="distance-result"></p>
 
-    <!-- STOP -->
-    <ul id="postcodeList">
+      <!-- STOP -->
+      <ul id="postcodeList" class="postcode-list">
         <li>Postcode: CH14BJ, Postcode ID: 1</li>
         <li>Postcode: CH14BJ, Postcode ID: 1</li>
         <li>Postcode: CH14BJ, Postcode ID: 1</li>
         <li>Postcode: CH14BJ, Postcode ID: 1</li>
         <li>Postcode: CH14BJ, Postcode ID: 1</li>
-    </ul>
+      </ul>
 
-    <div id="loginSection">
+      <div id="loginSection" class="form-section">
         <h2>Login</h2>
         <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit">Login</button>
         </form>
-        <div id="loginMessage"></div>
-    </div>
+        <div id="loginMessage" class="message"></div>
+      </div>
 
-    <div id="postcodeSection" style="display:none;">
+      <div id="postcodeSection" class="form-section" style="display: none">
         <h2>Add a Postcode</h2>
         <form id="postcodeForm">
-            <label for="postcode">Postcode:</label>
-            <input type="text" id="postcode" name="postcode" required>
-            <button type="submit">Add Postcode</button>
+          <label for="postcode">Postcode:</label>
+          <input type="text" id="postcode" name="postcode" required />
+          <button type="submit">Add Postcode</button>
         </form>
-        <div id="message"></div>
+        <div id="message" class="message"></div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
