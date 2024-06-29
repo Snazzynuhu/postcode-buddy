@@ -9,7 +9,18 @@
     <script src="postcodesFunc.js" defer></script>
   </head>
   <body>
-      <h1>Postcode List</h1>
+      <!-- <h1>Postcode List</h1> -->
+      <nav class="navbar">
+        <h1>Postcode List</h1>
+        <div class="navbar-left">
+          <p>J112511</p>
+        </div>
+        <div class="navbar-right">
+          <button id="loginBtn">Login</button>
+          <button id="registerBtn">Register</button>
+        </div>
+      </nav>
+      <h1>Postcode-Buddy</h1>
 <div>
   <ul id="postcodeList" class="postcode-list">
 
@@ -23,17 +34,33 @@
       </form>
       <p id="distance-result"></p>
 
-      <div id="loginSection" class="form-section">
-        <h2>Login</h2>
-        <form id="loginForm">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required />
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required />
-          <button type="submit">Login</button>
-        </form>
-        <div id="loginMessage" class="message"></div>
-      </div>
+      <div id="loginOverlay" class="overlay" style="display:none;">
+        <div id="loginSection" class="form-section">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+            <button type="submit">Login</button>
+          </form>
+          <div id="loginMessage" class="message"></div>
+        </div>
+        </div>
+
+        <div id="registerOverlay" class="overlay" style="display:none;">
+          <div id="registerSection" class="form-section">
+            <h2>Register</h2>
+            <form id="registerForm">
+              <label for="registerUsername">Username:</label>
+              <input type="text" id="registerUsername" name="username" required />
+              <label for="registerPassword">Password:</label>
+              <input type="password" id="registerPassword" name="password" required />
+              <button type="submit">Register</button>
+            </form>
+            <div id="registerMessage" class="message"></div>
+          </div>
+        </div>
 
       <div id="postcodeSection" class="form-section" style="display: none">
         <h2>Add a Postcode</h2>

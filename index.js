@@ -10,6 +10,33 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginMessageDiv = document.getElementById('loginMessage');
     const loginSection = document.getElementById('loginSection');
     const postcodeSection = document.getElementById('postcodeSection');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const registerSection = document.getElementById('registerSection');
+    const loginOverlay = document.getElementById('loginOverlay');
+    const registerOverlay = document.getElementById('registerOverlay');
+    const closeLoginOverlay = document.getElementById('closeLoginOverlay');
+    const closeRegisterOverlay = document.getElementById('closeRegisterOverlay');
+  
+    loginBtn.addEventListener('click', () => {
+        loginOverlay.style.display = 'flex';
+      });
+    
+      registerBtn.addEventListener('click', () => {
+        registerOverlay.style.display = 'flex';
+      });
+    
+      loginOverlay.addEventListener('click', (e) => {
+        if (e.target === loginOverlay) {
+          loginOverlay.style.display = 'none';
+        }
+      });
+    
+      registerOverlay.addEventListener('click', (e) => {
+        if (e.target === registerOverlay) {
+          registerOverlay.style.display = 'none';
+        }
+      });
 
     let isLoggedIn = false;
 
