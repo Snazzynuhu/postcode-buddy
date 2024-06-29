@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const postcodeList = document.getElementById("postcode-list");
     const postcode1 = document.getElementById("postcode1");
     const postcode2 = document.getElementById("postcode2");
     const distanceForm = document.getElementById("distance-form");
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
           "CH14BJ",
       ];
   
-    if (postcodeList) {
       fetch("https://api.postcodes.io/postcodes", {
         method: "POST",
         headers: {
@@ -47,14 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .then((data) => {
           const postcodes = data.result;
           postcodes.forEach((postcode) => {
-            const li = document.createElement("li");
-            li.textContent = postcode.query;
-            li.classList.add("postCodeItem");
-            li.addEventListener("click", () => {
-              window.location.href = `/postcodes.html?postcode=${postcode.query}`;
-            });
-            postcodeList.appendChild(li);
-  
             const option1 = document.createElement("option");
             option1.value = postcode.query;
             option1.textContent = postcode.query;
@@ -69,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
-    }
+    
   
     if (distanceForm) {
       distanceForm.addEventListener("submit", (e) => {

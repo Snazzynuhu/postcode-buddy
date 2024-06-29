@@ -41,7 +41,7 @@ $stmt->fetch();
 if ($hashed_password === null) {
     echo json_encode(['success' => false, 'message' => 'Invalid username.']);
 } elseif (password_verify($password, $hashed_password)) {
-    $_SESSION['user_id'] = $username; // Use username as session identifier
+    $_SESSION['user_id'] = $username; 
     echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'message' => 'Invalid password.']);

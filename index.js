@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         data.forEach(item => {
             const listItem = document.createElement('li');
-            // listItem.textContent = `Postcode: ${item.postcode}, Postcode ID: ${item.postcodeID}`;
             listItem.textContent = item.postcode;
             listItem.classList.add("postCodeItem");
             listItem.addEventListener("click", () => {
