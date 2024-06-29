@@ -17,7 +17,8 @@ h1 {
     color: #007BFF;
 }
 
-ul#postcode-list {
+
+ul.postcode-list {
     list-style: none;
     padding: 2em 3em;
     margin: 20px 0;
@@ -137,7 +138,6 @@ strong {
     color: #333;
 }
 
-/* START */
 
 .postcode-list {
     list-style: none;
