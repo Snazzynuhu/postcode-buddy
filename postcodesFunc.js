@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
               postcodeLatitude2,
               postcodeLongitude2
             );
-            distanceResult.textContent = `Distance: ${distance} meters`;
+            distanceResult.textContent = `Distance: ${distance} miles`;
           })
           .catch((error) => {
             console.error("Error fetching data:", error);
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
   
         function calculateDistance(latitude1, longitude1, latitude2, longitude2) {
-          const R = 6371000; // Radius of the Earth in meters
+          const R = 3958.8;
           latitude1 = toRadians(latitude1);
           longitude1 = toRadians(longitude1);
           latitude2 = toRadians(latitude2);

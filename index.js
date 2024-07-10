@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const deleteUrl = "https://2315110.linux.studentwebserver.co.uk/deletePostcode.php";
     const postcodeForm = document.getElementById('postcodeForm');
     const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
     const messageDiv = document.getElementById('message');
     const loginMessageDiv = document.getElementById('loginMessage');
     const loginSection = document.getElementById('loginSection');
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const postcode = document.getElementById('postcode').value;
 
         if (!isValidPostcode(postcode)) {
-            messageDiv.textContent = 'Invalid postcode format.';
+            messageDiv.textContent = 'Invalid postcode.';
             return;
         }
 
@@ -140,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 loginMessageDiv.textContent = 'Login successful!';
                 loginSection.style.display = 'none';
                 postcodeSection.style.display = 'block';
+                loginOverlay.style.display = 'none';
                 isLoggedIn = true;
                 fetchAllPostCodes();
             } else {
@@ -149,13 +151,52 @@ document.addEventListener("DOMContentLoaded", function() {
             loginMessageDiv.textContent = 'An error occurred during login.';
         }
     });
+
+    // Handles User registration
+
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('registerUsername').value;
+        const password = document.getElementById('registerPassword').value;
+    
+        const response = await fetch('register.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+    
+        const result = await response.json();
+        const registerMessage = document.getElementById('registerMessage');
+        if (result.success) {
+          registerMessage.textContent = 'Registration successful!';
+          registerMessage.style.color = 'green';
+          const registerButton = document.getElementById("registerButton");
+          registerButton.style.display = 'none';
+          const newLoginBtn = document.createElement('button');
+          newLoginBtn.textContent = 'Click To Login';
+          newLoginBtn.addEventListener('click', () => {
+            loginSection.style.display = 'block';
+            loginSection.classList.add('loginCentre');
+            registerSection.style.display = 'none';
+            // loginOverlay.style.display = 'block';
+            // registerBtn.style.display = 'none';
+            });
+            registerForm.appendChild(newLoginBtn);
+
+        } else {
+          registerMessage.textContent = result.message;
+          registerMessage.style.color = 'red';
+        }
+      });
     
      // Function to edit a postcode
      async function editPostcode(postcodeID, oldPostcode) {
         const newPostcode = prompt("Enter the new postcode:", oldPostcode);
 
         if (!newPostcode || !isValidPostcode(newPostcode)) {
-            alert("Invalid postcode format.");
+            alert("Invalid postcode.");
             return;
         }
 
@@ -209,11 +250,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Basic postcode validation (example pattern, adjust as needed)
-    function isValidPostcode(postcode) {
-        const postcodePattern = /^[A-Za-z0-9]{3,10}$/;
-        return postcodePattern.test(postcode);
+    // Validates Postcode:- Sourced from https://postcodes.io/
+    async function isValidPostcode(postcode) {
+        try {
+            const response = await fetch(`https://api.postcodes.io/postcodes/${postcode}/validate`);
+            const data = await response.json();
+            return data.result;
+        } catch (error) {
+            console.error('Error validating postcode:', error);
+            return false;
+        }
     }
+    
 
     fetchAllPostCodes();
 });
