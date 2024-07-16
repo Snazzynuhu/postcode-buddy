@@ -177,11 +177,10 @@ document.addEventListener("DOMContentLoaded", function() {
           const newLoginBtn = document.createElement('button');
           newLoginBtn.textContent = 'Click To Login';
           newLoginBtn.addEventListener('click', () => {
+              window.location.href = "https://2315110.linux.studentwebserver.co.uk/";
+              loginOverlay.style.display = 'flex';
+              registerBtn.style.display = 'none';
             loginSection.style.display = 'block';
-            loginSection.classList.add('loginCentre');
-            registerSection.style.display = 'none';
-            // loginOverlay.style.display = 'block';
-            // registerBtn.style.display = 'none';
             });
             registerForm.appendChild(newLoginBtn);
 
